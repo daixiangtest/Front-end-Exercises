@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修饰符练习</title>
+    <script src="vue.global.js"></script>
+    <style>
+        .main {
+            width: 300px;
+            height: 300px;
+            background: #00ff33;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #6a00ff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!-- 传统的@click 时间点击以后不光会调用当前dom 层级元素的方法 还会取执行父级的方法指定整个页面的层级才结束，这种情况我们称之为冒泡执行   -->
+    <!--  可以通过一些修饰符来自定义事件执行的层级  -->
+    <!--  .stop 修饰符 组织事件冒泡执行，不管是子级 还是本身执行就结束，不再执行父级的方法  -->
+    <!--  .prevent 阻止事件的默认行为 可以用来取消一些标签的默认页面调整和数据提交等等  -->
+    <!--   .self 修饰符 只有点击该元素时该事件才执行 -->
+    <div class="main" @click="console.log('main方法')">
+        <div class="box" @click.self="console.log('box方法')">
+            <button @click.prevent="console.log('点击按钮')">按钮</button>
+        </div>
+        <div class="box" @click.capture="console.log('优先执行该事件的方法')">
+            <button @click.once="console.log('只能触发一次点击按钮')">按钮</button>
+        </div>
+
+    </div>
+    <a href="https://www.baidu.com" @click.prevent="console.log('只执行指定函数不再调整页面了')">百度</a>
+    <!--键盘按钮修饰符-->
+    <div>
+        <div>用户名: <input type="text" v-model="login1.user"></div>
+        <!--        // 通过keyup 指定键盘操作来执行事件-->
+        <div> 密 码: <input type="text" v-model="login1.pwd" @keyup.enter="login"></div>
+        <div>
+            <button type="button" @click="login">登录</button>
+        </div>
+    </div>
+    <!--    表单修饰符-->
+    <div>
+        <div>用户名: <input type="text" v-model="login1.user"></div>
+<!--    .lazy 修饰符只有再数据输入完毕后一次性更新数据不会每次都同步    -->
+        <div>用户名: <input type="text" v-model.lazy="login1.user"></div>
+        <!--       .trm 可以过滤首位的空行-->
+        <div> 密 码: <input type="text" v-model.trim="login1.pwd" @keyup.enter="login"></div>
+<!--        .number 可以讲上送的数据转为number类型-->
+        <div>手机号:<input type="text" v-model.number="phone"></div>
+        <div>
+            <button type="button" @click="loginPhone">登录</button>
+        </div>
+    </div>
+</div>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                login1: {
+                    user: "",
+                    pwd: ''
+                },
+                phone: ''
+
+            }
+        },
+        methods: {
+            login() {
+                console.log('登录用户', this.login1)
+            },
+            loginPhone() {
+                console.log('手机号', this.phone, typeof(this.phone))
+                console.log(this.login1)
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</body>
+</html>

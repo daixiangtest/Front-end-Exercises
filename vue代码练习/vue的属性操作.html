@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 常规模板使用</title>
+    <script src="vue.global.js">
+        // 引入vue
+    </script>
+</head>
+<body>
+<div id="app">
+    // 通过 ：属性名 可以应用数据的变量值
+    <a :href="url1.path">{{ url1.name }}}</a>
+    <h1>{{ aa }}</h1>
+    // 通过 @click 可以创建点击事件来执行对应的js 方法
+    <button type="button" @click="checkUrl">点击</button>
+    <button type="button" @click="checkDta">dianji</button>
+    <div>
+        <button @click="upa">-</button>
+        <h1>{{ number }}</h1>
+        <button @click="add">+</button>
+    </div>
+    <div>
+        <div v-text="phone"></div>
+        // 通过 v-model 可以获取变量的值做文本展示，且在平台修改值时数据同变更
+        <input type="text" v-model="phone">
+    </div>
+    <button type="button" @click="add">+</button>
+    <div :style='style1'>
+        字体大小切换
+    </div>
+    <button type="button" @click="upa">-</button>
+
+    <div>
+<!--        if else 判断 只有判断生效的元素才展示出来-->
+        <h1 v-if="cases[0].result=='succes'" style="background: #00ff33">{{cases[0]}}</h1>
+        <h1 v-else-if="cases[1].result=='error'" style="background: #6a00ff">{{cases[1]}}</h1>
+        <h1 v-else style="background: #55103f">{{cases[1]}}</h1>
+<!--        通过判断bool值来展示或隐藏该元素-->
+        <h1 v-show="bool">box001</h1>
+    </div>
+    <div>
+<!--        遍历数组-->
+        <li v-for="case1 in cases">{{case1}}</li>
+<!--遍历对象或者获取数组的值与下标-->
+        <li v-for="(case1,index) in cases ">{{case1}}{{index}}</li>
+    </div>
+</div>
+
+
+<!--创建vue对象-->
+<script>
+    // 创建vue对象
+    var app = Vue.createApp({
+        //定义数据
+        data() {
+            return {
+                url1: {
+                    name: "dai",
+                    path: 'https://www.baidu.com'
+                },
+                aa: 'python',
+                number: 0,
+                phone: 123456,
+                cases: [{case_id: 1, title: "用例001", result: "success"},
+                    {case_id: 1, title: "用例002", result: "error"},
+                    {case_id: 1, title: "用例003", result: "fail"}],
+                bool:false
+            }
+
+        },
+        //定义方法
+        methods: {
+            checkUrl() {
+                this.url1.path = 'https://www.taobao.com'
+            },
+            checkDta() {
+                this.aa = 'java'
+            },
+            add() {
+                this.number++
+            },
+            upa() {
+                this.number--
+            }
+        },
+        // 计算属性 可以实现对字符串的凭借
+        computed: {
+            style1() {
+                return {
+                    fontSize: this.number + '0px',
+                    color: 'red'
+                }
+
+            }
+        }
+
+    })
+    // 挂载根节点
+    app.mount("#app")
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素浮动</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: solid 1px #08ff00;
+            /*当文本展示不够时生成滚动条*/
+            /*overflow: auto;*/
+            /*超出文本内容不展示*/
+            overflow: hidden;
+            /*元素的显示和隐藏*/
+            /*display: none;*/
+        }
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            /*    设置浮动 left 向左浮动 right 向右浮动 none 默认值,元素不浮动 inherit 从父级元素中继承float 属性的值*/
+            float: left;
+            clear: both;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float: left;
+        }
+        .main {
+            /*width: 300px;*/
+            /*height: 600px;*/
+            /*background: skyblue;*/
+            /*解决浮动塌陷*/
+            /*overflow: hidden;*/
+        }
+        .box5{
+            width: 500px;
+            height: 500px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="box" >
+        背景： OCGT特约商户KingPower使用的是传统的收银系统，通过DLL文件对接gateway API，仅处理CPM QR交易。所以CIL需要给商户开发提供DLL文件。
+        需要开发DLL功能支持KingPower处理CPM QR交易，需要支
+    </div>
+    <div class="box1">
+
+    </div>
+    <div class="box2">
+
+    </div>
+<!--    解决浮动塌陷2-->
+    <div style="clear: both;"></div>
+</div>
+<div class="box5">
+    <h1>python</h1>
+</div>
+</body>
+</html>

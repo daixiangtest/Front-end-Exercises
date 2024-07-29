@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性练习</title>
+    <script src="vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>商品名:{{ name }}</h3>
+    <h3>单 价:{{ price }}</h3>
+
+    <h3>数 量:
+        <button @click.self="number--">-</button>
+        <input type="number" v-model.number="number">
+        <button @click.self="number++;console.log(number)">+</button>
+    </h3>
+    <h3>折 扣: {{ n }}</h3>
+    <h3>总 价:{{ sum }}</h3>
+    <h3>计算总价: <input type="text" v-model.number="sum"></h3>
+    <hr>
+    <h2>手机号 <input type="text" v-model="info.phone"></h2>
+    <h2>密码 <input type="text" v-model="info.pwd"></h2>
+</div>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                name: '苹果',
+                price: 3,
+                number: 10,
+                n: 1,
+                info:{
+                    phone:'1535654',
+                    pwd:'ssd555s'
+                }
+            }
+        },
+        // 定义计算属性 定义可改变的计算值
+        computed: {
+            // 计算属性的值不可直接更改,只能通过更改相关的数值来变相更改
+            // sum() {
+            //     return this.price * this.number
+            // }
+            // 计算属性的值需要修改时需要声明一个对象 get 用来获取值 set 用来处理修改逻辑
+            sum: {
+                // 返回计算属性的值
+                get() {
+                    return this.price * this.number*this.n
+                },
+                // 更改计算属性的值,通过间接修改相关连的值来实现
+                set(newvl) {
+                    this.n = newvl / (this.price * this.number)
+                }
+            }
+        },
+        // 侦听数据
+        watch:{
+            // 声明一个函数来侦听number的值第一个参数为最新的值,第二个参数为更改前的值
+            number:function (val,val2){
+                console.log('number的值',val,val2)
+                if (val<0){
+                    this.number=0
+                }else if (val>100){
+                    this.number=val2
+                    alert('数量不够了')
+                }
+            },
+            // 多层数据结构通过对象名来监听,handler 来结束数据的参数 deep 声明 可深度侦听
+            info:{
+                handler:function (value,oldval){
+                    console.log(value,oldval)
+                },
+                deep:true
+            }
+        },
+        methods: {},
+        // 生命周期钩子函数(不声明不执行,不同的钩子可以再不同的阶段取处理一些事务)
+        setup(){
+            console.log('初始化后执行',this.name)
+
+        },
+        // 组件创建
+        beforeCreate() {
+            console.log('接受api数据之前执行',this.name)
+        },
+        created() {
+            console.log('接受api数据之后执行',this.name)
+        },
+        // 数据挂载
+        mounted() {
+            console.log('数据挂载之后执行',this.name)
+        },
+        beforeMount() {
+            console.log('数据挂载之前执行',this.name)
+        },
+        // 数据侦听
+        beforeUpdate() {
+            console.log('修改数据展现数据之前执行',this.number)
+        },
+        updated() {
+            console.log('数据数据展现数据之后执行',this.number)
+        }
+    })
+    app.mount('#app')
+</script>
+</body>
+</html>

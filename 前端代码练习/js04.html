@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js函数</title>
+</head>
+<body>
+<script>
+    function add(a, b) {
+        console.log(a + b)
+    }
+
+    add(10, 20)
+    // js语法定义函数,以function 开头 且传入参数没有明确规定，所有的参数都可以使用
+    // arguments 来接受 ,位置参数也包含在内，位置参数接收异常也不会报错
+    function add1(a, b) {
+        console.log('多余的参数为', arguments)
+        return a + b
+    }
+
+    // add1(10) b 没有参数接收变量为undefind
+    // add1(10,20,30) 不会报错
+    //  对象可以用{}来声明，对象的可以存放字典，也可以存在函数
+    obj = {}
+    var name = 'sssaa'
+    var class1 = {
+        "name": "dx",
+        "id": "123456",
+        // 普通函数的this 作用域只能取到对象中的值
+        fun1: function (a, b) {
+            console.log(a - b)
+            console.log(this.id)
+        },
+        // 箭头函数的this 作用域可以取到整个文件模块中的值
+        fun2: (a, b) => {
+            console.log(a + b)
+            console.log(this.name)
+        }
+    }
+    class1.fun1()
+
+
+</script>
+</body>
+</html>

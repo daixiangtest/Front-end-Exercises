@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量与数据类型</title>
+    <script>
+        var x;
+        x = 20;
+        var y = 3;
+        var a1 = 100, b1 = 200, c1 = 300;
+        //     变量的3种方式 var 常规变量  let 局部变量  const 常量不可更改
+        let a2 = 101;
+        const a3 = 103;
+
+        //     数据类型：
+        //     字符串 数字 布尔 Null Undefind 数值
+
+        var a4 = 3;
+        var a5 = 3.6;
+        // 字符串的用法
+        var b2 = "saasdw";
+        alert(`你好啊${b2}`)
+        b3 = '12345'
+        alert(b2 + b3)
+        // 通过下表取值
+        var b4 = b2[3]
+        // 切片截取(取下标位置的值)
+        var b5 = b2.slice(1, 2)
+
+        var c2 = true;
+        // 变量未赋值为undefind类型
+        var c3;
+        // 变量赋值为null 数据为null
+        var c4 = null;
+
+
+        //     数组
+        var array1 = ['PYTHON', 'JAVA', 'JS'];
+        // 通过下表取值
+        console.log(array1[1])
+        // 切片部分数据
+        alert(array1.slice(1, 2))
+        //     获取数组的长度
+        alert(array1.length);
+        //     删除数组中的最后一个元素
+        alert(array1.pop());
+        //     添加数组元素
+        alert(array1.push('go'));
+        // 指定位置增删改（splice(指定开始元素的下标，需要删除的数量，需要新增的值)）
+        console.log(array1.splice(2, 0, '新增'))
+        console.log(array1.splice(1, 1))
+        console.log(array1.splice(1, 1, '更改'))
+
+
+        //     比较运算符 == 与 === 的区别
+        a6 = 1;
+        a7 = "1";
+
+        // 比较里面的值是否相同
+        alert(a6 == a7);
+        // 比较值以外还比较数据类型
+        alert(a6 === a7);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

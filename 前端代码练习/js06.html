@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组遍历</title>
+</head>
+<body>
+
+<script>
+    var arr = [11, 22, 33, 44, 55]
+    // forEach 遍历数组的同时可以接收一个回调函数接受数组中的参数进行处理
+    // arr.forEach(function (item, index, array) {
+    //     console.log(item, index, array)
+    // })
+    // 根据回调函数返回的值来过滤值
+    var re1 = arr.filter(function (item) {
+        return item > 22
+    })
+    console.log(re1)
+    // 返回符合条件的第一个元素
+    var re2 = arr.find(function (value, index) {
+        return value > 33
+    })
+    console.log(re2)
+    // 返回符合条件的第一个元素的下标
+    var re3 = arr.findIndex(function (value, index) {
+        return value > 33
+    })
+    console.log(re3)
+    // 字符串转化为json
+    var str1 = '{"name":"dx","age":"18"}'
+    var obj = JSON.parse(str1)
+    // 对象转化为字符串
+    var obj1 = {name: "xiao", age: "19"}
+    var str2 = JSON.stringify(obj1)
+    console.log(str2)
+
+</script>
+
+</body>
+</html>

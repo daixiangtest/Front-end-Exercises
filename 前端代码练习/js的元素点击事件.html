@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击事件</title>
+    <style>
+        .box {
+            background: #00ff33;
+            height: 200px;
+            width: 300px;
+        }
+
+        .box1 {
+            background: red;
+            height: 200px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<!--onclick 为元素点击时间点击元素时会调用该属性的js函数-->
+<button onclick="swithTo()">点击切换显示</button>
+<button onclick="isShow()">显示与隐藏</button>
+<div class="box" id="aa1">
+    测试框
+</div>
+
+<script>
+    function swithTo() {
+        var aa = document.querySelector('#aa1')
+
+        if (aa.className === 'box') {
+            document.querySelector('.box').className = 'box1'
+        } else {
+            document.querySelector('#aa1').className = 'box'
+        }
+    }
+
+    function isShow() {
+        var aa = document.querySelector('#aa1')
+        console.log("元素", document.getElementById('aa1').style.display)
+        if (aa.style.display === 'none') {
+            aa.style.display = 'block'
+        } else {
+            aa.style.display = 'none'
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性盒模型</title>
+    <style>
+        .main {
+            width: 600px;
+            height: 600px;
+            background: #08ff00;
+        /*    将该元素设为弹性盒模型的容器*/
+            display: flex;
+        /*    设置容器中的排列顺序*/
+        /*    flex-direction: column;*/
+        /*    控制容器中元素的主轴对齐方式*/
+            justify-content: center;
+        /*交叉轴对其方式*/
+            align-items: center;
+        }
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background: #6a00ff;
+            order: 2;
+            /*剩余空间 针对剩余空间与数值等比例分配*/
+            flex: 2;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background: salmon;
+            order: 3;
+            flex: 3;
+        }
+
+        .box3 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            /*控制容器中的排列顺序*/
+            order:1;
+            flex: 2;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="box1">
+1
+    </div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+</div>
+</body>
+</html>

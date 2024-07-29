@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单测试</title>
+</head>
+<!--div标签是一个标准的块元素，默认会占据整行内容-->
+<!--span标签是一个行内元素，元素展示在一行内 无法通过css来修饰宽高-->
+<!--行内块元素，可以通过css来修饰宽高-->
+<body>
+<div style="background: cyan;height: 60px;width: 200px">块元素1</div>
+<div style="background: red;height: 60px;width: 200px">块元素2</div>
+<div style="background: red;height: 60px;width: 200px">块元素3</div>
+<span>python</span>
+<span>java</span>
+<span>go</span>
+<br>
+<!--转化为行内块元素 通过display: inline-block来修饰-->
+<div style="background: cyan;height: 60px;width: 200px;display: inline-block">行内块元素1</div>
+<div style="background: red;height: 60px;width: 200px;display: inline-block">行内块元素2</div>
+<span style="background: rebeccapurple;height: 60px;width:200px;display: inline-block">python</span>
+<br>
+<!--转化为行内元素-->
+<div style="background: #08ff00;height: 60px;width: 200px;display: inline">行内元素3</div>
+<div>
+    <form action="" method="post">
+        <!--        label标签用来关联input的标签通过相同的id进行关联-->
+        <label for="u1">用户名：</label>
+        <input type="text" name="user" id="u1">
+        <br>
+        <label for="u2">密 码：</label>
+        <input type="password" name="pwd" id="u2">
+        <br>
+        提交：<input type="submit">
+        重置 <input type="reset">
+        <!--        单选框-->
+        <div>
+
+            <label for="a2">性别：</label>
+            <input type="radio" id="a2" value="nan" name="sex">男
+            <input type="radio" value="nv" name="sex">女
+        </div>
+        <!--        多选框-->
+        <div>
+            技能：
+            <input type="checkbox" value="python" name="jineng">python
+            <input type="checkbox" value="java" name="jineng">java
+            <input type="checkbox" value="go" name="jineng"> go
+        </div>
+        <div>
+            文件上传：
+            <input type="file" name="pic">
+        </div>
+        <div>
+            日期：
+            <input type="date" name="date">
+        </div>
+        <div>
+            隐藏的表单
+            <input type="hidden" name="token" value="123456">
+        </div>
+        <!--        文本输入框-->
+        <div>
+            个人介绍：
+            <textarea name="text" id="a1" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            下拉选项框：
+            <select name="city">
+                <option value="上海">上海</option>
+                <option value="beijing">北京</option>
+                <option value="chengdu">成都</option>
+            </select>
+        </div>
+        <div>
+            <iframe src="http://www.taobao.com" height="500px" width="500px"></iframe>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+</head>
+<body>
+<script>
+    <!--    while循环-->
+    var i = 5;
+    while (i <= 10) {
+        console.log(i)
+        i++
+    }
+    // for 循环
+    for (i = 0; i <= 5; i++) {
+        console.log(i)
+    }
+    // 循环遍历
+    // for in 遍历的为数组的下标
+    var arr = ['aa', 'bb', 'cc', 'dd', 11, 22]
+    for (i in arr) {
+        console.log(i)
+    }
+    // for of 遍历的为数组的值
+    for (i of arr) {
+        console.log(i)
+    }
+    // 遍历对象
+    var obj = {
+        'name': 'xiaohau',
+        'id': '123456',
+        fun1: (a) => {
+            return a
+        },
+        fun2: function (a) {
+            return a + 1
+        }
+    }
+    // 获取对象的属性
+    for (i in obj) {
+        console.log("遍历的对象",i)
+    }
+    // 下面的方法无法获取对象的值
+    // for (i of obj) {
+    //     console.log("遍历的对象值",i)
+    // }
+</script>
+</body>
+</html>

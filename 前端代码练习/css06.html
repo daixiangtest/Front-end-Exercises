@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录窗口练习</title>
+    <style>
+        /*.login {*/
+        /*    width: 800px;*/
+        /*    height: 500px;*/
+        /*    background: red;*/
+        /*    border: solid 1px sandybrown;*/
+        /*    !*calc函数可以获取屏幕的总高度比来实现边框居中展示*!*/
+        /*    margin: calc((100vh - 500px) / 2) auto;*/
+        /*}*/
+        body {
+            background: palegoldenrod;
+        }
+
+        .login {
+            width: 600px;
+            height: 400px;
+            border: solid 1px deepskyblue;
+            margin: calc((100vh - 402px) / 2) auto;
+            background: rgba(11, 22, 22, 0.1);
+            text-align: center;
+            /*设置边框的圆角设置*/
+            border-radius: 20px;
+            /*设置边框的阴影 四个参数依次为 左右偏移 上下偏移 偏移边框 偏移边框的颜色*/
+            box-shadow: 00px 00px 30px red;
+
+        }
+
+        .title {
+            font: bold 24px/100px 微软雅黑;
+            color: #fff;
+            text-align: center;
+        }
+
+        .input_box {
+            width: 80%;
+            height: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            background: #6a00ff;
+            border: none;
+            color: white;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="login">
+    <div class="title">用户注册</div>
+    <div class="input_box">
+        用户昵称
+        <input type="text">
+    </div>
+    <div class="input_box">
+        邮箱账户
+        <input type="text">
+    </div>
+    <div class="input_box">
+        登录密码
+        <input type="password">
+    </div>
+    <div class="input_box">
+        确认密码
+        <input type="password">
+    </div>
+    <div class="input_box">
+        <button type="button">注册</button>
+    </div>
+    <!--    <form action="">-->
+    <!--        <div class="user">-->
+    <!--            <label>-->
+    <!--                <input type="text">-->
+    <!--            </label>-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <label>-->
+    <!--                <input type="text">-->
+    <!--            </label>-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <input type="submit">-->
+    <!--        </div>-->
+
+    <!--    </form>-->
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标签内容更改</title>
+    <script src="vue.global.js">
+    </script>
+</head>
+<body>
+<div id="app">
+<!--    插值表达式-->
+    <h1>{{ info1 }}}</h1>
+<!--    填充纯文本内容-->
+    <div v-text="stu.name">123</div>
+<!--    填充HTML-->
+    <div v-html="desc"></div>
+<!--    填充原始数据不识别属性标签-->
+    <div v-pre>{{stu.name}}</div>
+<!--    点击事件-->
+    <button @click="swithTest">切换</button>
+
+
+</div>
+
+<script>
+    var app = Vue.createApp({
+        data() {
+            return {
+                info1: 'python',
+                msg:'success',
+                stu:{
+                    name:'zhangsan',
+                    age:18
+                },
+                desc:'<h1>你好</h1>'
+            }
+        },
+        methods: {
+            swithTest() {
+                this.info1 = 'java'
+            }
+
+        }
+    })
+    app.mount('#app')
+</script>
+</body>
+</html>

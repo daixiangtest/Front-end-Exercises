@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素的标签</title>
+    <script>
+        // js代码的执行顺序是从上到下依次执行的一般会将js代码放在文本的最下面，或者使用window.onload 方法来声明该函数里面的脚本最后执行
+        window.onload = function () {
+            var a5 = document.getElementsByTagName('h1').item(0)
+            console.log("a5",a5)
+        }
+    </script>
+    <style>
+        .box {
+            background: #00ff33;
+            width: 300px;
+            height: 200px;
+
+        }
+    </style>
+
+</head>
+<body id="app1">
+<div>
+    <h1>python</h1>
+    <h1>java</h1>
+</div>
+<div class="box">python</div>
+<script>
+    // 通过id 获取元素
+    var a1 = document.getElementById("app1")
+    console.log(a1)
+    //     通过标签名获取元素
+    var a2 = document.getElementsByTagName('div')
+    console.log(a2)
+    // 通过class 来获取元素
+    var a3 = document.getElementsByClassName('box')
+    console.log(a3)
+    // 通过css 选择器
+    var a4 = document.querySelector('.box')
+    console.log("a4", a4)
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例练习</title>
+    <!--需求：创建一个学生成绩表单 且通过按钮对表单数据进行增删改的操作-->
+    <script src="vue.global.js"></script>
+    <style>
+//        定义弹窗的样式
+        .box {
+            width: 300px;
+            height: 300px;
+            top: calc((100vh - 300px) / 2);
+            left: calc((100vw - 300px) / 2);
+            position: fixed;
+            box-shadow: 0 0 5px red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--创建表格展示数据    -->
+    <table border="1">
+        <tr>
+<!--            展示表格的行头-->
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </tr>
+<!--        展示表格的行数据 通过循环遍历这些数据依次展示-->
+        <tr v-for="(st,index) in stu" key="index">
+            <td>{{ st.id }}</td>
+            <td>{{ st.name }}</td>
+            <td>{{ st.age }}</td>
+            <td>{{ st.sex }}</td>
+<!--            判断成绩是否及格来展示不同颜色的字体-->
+            <td v-if="st.score=='不及格'" style="color: red">{{ st.score }}</td>
+            <td v-else-if="st.score=='及格'" style="color: #00ff33">{{ st.score }}</td>
+            <td v-else style="color: #6a00ff">{{ st.score }}</td>
+            <td>
+<!--                通过按钮的点击事件触发对应的函数-->
+                <button @click="editShow(index)">编辑</button>
+                <button @click="delData(index)">删除</button>
+            </td>
+        </tr>
+
+    </table>
+<!--    通过点击事件来控制弹窗的显示与隐藏-->
+    <button @click="addShow">新增</button>
+
+    <div class="box" v-show="showAdd">
+        <h2>添加数据</h2>
+        <div>学号: <input type="text" v-model="st1.id"></div>
+        <div>姓名: <input type="text" v-model="st1.name"></div>
+        <div>年龄: <input type="text" v-model="st1.age"></div>
+        <div>性别: <input type="text" v-model="st1.sex"></div>
+        <div>成绩: <input type="text" v-model="st1.score"></div>
+        <br>
+        <div>
+            <button @click="showAdd=false">取消</button>
+            <button @click="saveAdd">保存</button>
+        </div>
+    </div>
+    <div class="box" v-show="showEdit">
+        <h2>更改数据</h2>
+        <div>学号: <input type="text" v-model="st2.id" disabled></div>
+        <div>姓名: <input type="text" v-model="st2.name"></div>
+        <div>年龄: <input type="text" v-model="st2.age"></div>
+        <div>性别: <input type="text" v-model="st2.sex"></div>
+        <div>成绩: <input type="text" v-model="st2.score"></div>
+        <br>
+        <div>
+            <button @click="showEdit=false">取消</button>
+            <button @click="saveEdit">更改</button>
+        </div>
+    </div>
+
+
+</div>
+<script>
+    //定义返回的数据
+    const app = Vue.createApp({
+        data() {
+            return {
+                stu: [{id: "01", name: "张三", "age": 18, "sex": "男", "score": "及格"},
+                    {id: "02", name: "李四", "age": 19, "sex": "女", "score": "不及格"},
+                    {id: "03", name: "王五", "age": 19, "sex": "男", "score": "及格"},
+                    {id: "04", name: "刘二", "age": 20, "sex": "女", "score": "不及格"},
+                    {id: "05", name: "马六", "age": 21, "sex": "男", "score": "及格"}],
+                showAdd: false,
+                st1: {id: '', name: '', age: '', sex: '', score: ''},
+                showEdit: false,
+                index: '',
+                st2: {id: '', name: '', age: '', sex: '', score: ''},
+            }
+        },
+        // 定义需要调用的方法名
+        methods: {
+            addShow() {
+                this.showAdd = true
+            },
+            saveAdd() {
+                const data = {...this.st1}
+                this.stu.push(data)
+                this.showAdd = false
+                alert("数据保存成功")
+            },
+            delData(index) {
+                this.stu.splice(index, 1)
+                alert("删除成功")
+            },
+            editShow(index) {
+                this.st2 = this.stu[index]
+                this.showEdit = true
+                this.index = index
+            },
+            saveEdit() {
+                this.stu[this.index] = this.st2
+                this.showEdit = false
+                alert("更改成功")
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .box1{
+            background: orange;
+        /*    相对定位偏移*/
+            position: relative;
+            /*从左向右偏移*/
+            left: 50px;
+            /*从上向下偏移*/
+            top:50px
+        /*    偏移之后在文档流中的位置还占据在原来文档流中的位置*/
+        }
+        .box2{
+            background: red;
+        }
+        .box3{
+            background: #6a00ff;
+        }
+        .box4{
+            width: 600px;
+            height: 600px;
+            background: skyblue;
+            position: relative;
+        }
+        div div{
+            /*绝对定位*/
+            width: 100px;
+            height: 100px;
+        }
+        .box41{
+            background: salmon;
+            /*绝对定位 偏移之后会释放文档流*/
+            position: absolute;
+            /*偏移相对与已经定位的父级元素 没有最终会找到body*/
+            left: 100px;
+            top: 100px;
+
+        }
+        .box42{
+            background: #00ff33;
+        }
+        .box43{
+            background: #55103f;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4">
+    <div class="box41"></div>
+    <div class="box42"></div>
+    <div class="box43"></div>
+</div>
+
+<h2>结束</h2>
+</body>
+</html>
